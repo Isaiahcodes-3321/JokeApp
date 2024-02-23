@@ -22,7 +22,7 @@ class _DisplayState extends State<Display> {
       return Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: const Text('JOKE GENERATOR',
+          title: const Text('JOKE GENERATOR bb ',
               textAlign: TextAlign.center, style: TextStyle(fontSize: 18)),
         ),
         body: Container(
