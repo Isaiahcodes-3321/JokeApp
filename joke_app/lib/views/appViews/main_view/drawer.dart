@@ -1,6 +1,5 @@
 import 'export.dart';
 
-
 class DrawerView extends StatelessWidget {
   const DrawerView({Key? key}) : super(key: key);
 
@@ -173,7 +172,8 @@ class HeaderDrawer extends StatelessWidget {
             child: Center(
           child: Column(
             children: [
-              const TextAnimation(
+              TextAnimation(
+                onPressed: () {},
                 text: 'I JOKES',
                 size: 27,
               ),

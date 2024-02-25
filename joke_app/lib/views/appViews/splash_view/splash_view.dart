@@ -37,7 +37,8 @@ class _SplashViewState extends State<SplashView> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // ignore: deprecated_member_use
-              const TextAnimation(
+              TextAnimation(
+                onPressed: (){},
                 text: "I JOKES",
                 size: 33,
               ),

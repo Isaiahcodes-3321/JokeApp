@@ -17,6 +17,7 @@ class MyAppBar extends StatelessWidget {
         width: 60.w,
         child: Center(
           child: TextAnimation(
+            onPressed: (){},
             text: text,
             size: 20,
           ),
@@ -30,6 +31,21 @@ class MyAppBar extends StatelessWidget {
             color: AppThemes.blackColor,
             size: 25.sp,
           )),
+      actions: [
+        PopupMenuButton(
+          itemBuilder: (context) => [
+            PopupMenuItem(
+              height: 4.h,
+              onTap: (){},
+                child: Row(
+                  children: [
+                    Icon(Icons.star_border_rounded),
+                    Text('Favourite'),
+                  ],
+                ))
+          ],
+        )
+      ],
     );
   }
 }

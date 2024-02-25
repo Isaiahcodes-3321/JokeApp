@@ -24,6 +24,9 @@ class StackBody extends StatelessWidget {
             decoration: BoxDecoration(
                 color: AppThemes.whiteColor,
                 borderRadius: BorderRadius.circular(20.sp)),
+                child: Column(children: [
+                  
+                ]),
           ),
           SizedBox(
             height: 2.h,

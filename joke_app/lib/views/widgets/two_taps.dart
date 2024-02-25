@@ -3,8 +3,10 @@ import 'export.dart';
 
 
 class TwoTaps extends StatelessWidget {
-    final VoidCallback onPressed;
-  const TwoTaps({Key? key, required this.onPressed}) : super(key: key);
+    final VoidCallback onPressedCopy;
+     final VoidCallback onPressedFavorite;
+     final Color color;
+  const TwoTaps({Key? key, required this.onPressedCopy, required this.onPressedFavorite, required this.color, }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,12 +22,13 @@ class TwoTaps extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           IconButton(
-            icon: Icon(Icons.star, size: 24.sp),
-            onPressed: onPressed,
+            icon: Icon(Icons.star_border_rounded, size: 24.sp),
+            onPressed: onPressedFavorite,
+            color: color,
           ),
           IconButton(
             icon: Icon(Icons.content_copy, size: 24.sp),
-            onPressed: onPressed,
+            onPressed: onPressedCopy,
           ),
         ],
       ),

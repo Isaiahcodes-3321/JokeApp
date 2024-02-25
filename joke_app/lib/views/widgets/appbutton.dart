@@ -1,7 +1,5 @@
 import 'export.dart';
 
-
-
 class AppButton extends StatelessWidget {
   final VoidCallback onPressed;
 
@@ -22,7 +20,8 @@ class AppButton extends StatelessWidget {
       child: Padding(
           padding:
               EdgeInsets.only(left: 25.w, right: 25.w, top: 2.h, bottom: 2.h),
-          child: const TextAnimation(
+          child: TextAnimation(
+            onPressed: onPressed,
             text: 'Generate Joke',
             size: 19,
           )),
