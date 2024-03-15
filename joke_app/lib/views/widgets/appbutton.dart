@@ -20,11 +20,14 @@ class AppButton extends StatelessWidget {
       child: Padding(
           padding:
               EdgeInsets.only(left: 25.w, right: 25.w, top: 2.h, bottom: 2.h),
-          child: TextAnimation(
-            onPressed: onPressed,
-            text: 'Generate Joke',
-            size: 19,
-          )),
+          child: FittedBox(
+            child: 
+            TextAnimation(
+              onPressed: onPressed,
+              text: 'Generate Joke',
+              size: 18,
+            ),
+          ),),
     );
   }
 }

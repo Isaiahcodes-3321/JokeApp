@@ -44,7 +44,7 @@ class _SplashViewState extends State<SplashView> {
               ),
               Image.asset(
                 AppImages.laughingEmojiPng,
-                width: MediaQuery.of(context).size.width * 0.6,
+                width: 50.w,
               )
             ]),
       ),

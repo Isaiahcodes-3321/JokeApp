@@ -1,5 +1,4 @@
 import 'export.dart';
-import 'package:joke_app/views/widgets/text_animation.dart';
 
 class MyAppBar extends StatelessWidget {
   final String text;
@@ -16,10 +15,12 @@ class MyAppBar extends StatelessWidget {
       title: SizedBox(
         width: 60.w,
         child: Center(
-          child: TextAnimation(
-            onPressed: (){},
-            text: text,
-            size: 20,
+          child: FittedBox(
+            child: TextAnimation(
+              onPressed: () {},
+              text: text,
+              size: 20.sp,
+            ),
           ),
         ),
       ),
@@ -29,18 +30,23 @@ class MyAppBar extends StatelessWidget {
           icon: Icon(
             Icons.menu_open_rounded,
             color: AppThemes.blackColor,
-            size: 25.sp,
+            size: 23,
           )),
       actions: [
         PopupMenuButton(
+          iconSize: 23,
           itemBuilder: (context) => [
             PopupMenuItem(
-              height: 4.h,
-              onTap: (){},
+                height: 4.h,
+                onTap: () {},
                 child: Row(
                   children: [
-                    Icon(Icons.star_border_rounded),
-                    Text('Favourite'),
+                   const Icon(Icons.star_border_rounded, size: 20,),
+                    TextAnimation(
+                      onPressed: () {},
+                      text: 'Favorite',
+                      size: 19.sp,
+                    ),
                   ],
                 ))
           ],

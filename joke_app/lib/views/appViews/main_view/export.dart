@@ -1,7 +1,6 @@
 export 'package:joke_app/views/appThemes/appImages.dart';
 export 'package:joke_app/views/widgets/text_animation.dart';
-export 'package:joke_app/controller/providers/main_screen_provider.dart';
-export 'package:joke_app/controller/provider_ref.dart';
+export 'package:joke_app/model/provider/appbar_providers/main_screen_provider.dart';
 export 'package:flutter_riverpod/flutter_riverpod.dart';
 export 'package:joke_app/controller/appcontrols/controller.dart';
 export 'package:joke_app/views/appViews/main_view/jokes_views/pun/pun.dart';
@@ -10,7 +9,6 @@ export 'package:joke_app/views/appViews/main_view/jokes_views/dark/dark.dart';
 export 'package:joke_app/views/appViews/main_view/jokes_views/spooky/spooky.dart';
 export 'package:joke_app/views/appViews/main_view/jokes_views/random/random.dart';
 export 'package:joke_app/views/appViews/main_view/jokes_views/programming/programming.dart';
-export 'package:joke_app/views/appViews/main_view/jokes_views/famous_quote/famous_quote.dart';
 export 'package:joke_app/views/appViews/main_view/jokes_views/miscellaneous/miscellaneous.dart';
 export 'package:animated_text_kit/animated_text_kit.dart';
 export 'package:flutter/material.dart';

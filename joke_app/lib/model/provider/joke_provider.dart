@@ -1,7 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final jokeP = StateProvider((ref) => '');
+final singleJokeP = StateProvider((ref) => '');
 final setUpP = StateProvider((ref) => '');
 final deliveryP = StateProvider((ref) => '');
+final isLoading = StateProvider((ref) => '');
 
-var reff;
+var refProvider;

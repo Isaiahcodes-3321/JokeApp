@@ -9,18 +9,20 @@ class TextAnimation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ColorizeAnimatedTextKit(
-            onTap: onPressed,
-      text: [text],
-      textStyle: AppTextStyle.bold().copyWith(fontSize: size.sp),
-      colors: [
-        AppThemes.blackColor,
-        AppThemes.orangeColor,
-        AppThemes.whiteColor,
-        AppThemes.blackColor
-      ],
-      textAlign: TextAlign.center,
-      repeatForever: true,
+    return FittedBox(
+      child: ColorizeAnimatedTextKit(
+              onTap: onPressed,
+        text: [text],
+        textStyle: AppTextStyle.bold().copyWith(fontSize: size.sp),
+        colors: [
+          AppThemes.blackColor,
+          AppThemes.orangeColor,
+          AppThemes.whiteColor,
+          AppThemes.blackColor
+        ],
+        textAlign: TextAlign.center,
+        repeatForever: true,
+      ),
     );
   }
 }

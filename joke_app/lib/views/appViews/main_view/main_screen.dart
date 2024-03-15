@@ -1,4 +1,5 @@
 import 'export.dart';
+import 'package:joke_app/model/provider/joke_provider.dart';
 
 class MainView extends ConsumerWidget {
   const MainView({Key? key}) : super(key: key);
@@ -7,7 +8,7 @@ class MainView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
-    providerRef = ref;
+    refProvider = ref;
     return SafeArea(
         child: Scaffold(
       key: _scaffoldKey,
@@ -22,22 +23,34 @@ class MainView extends ConsumerWidget {
         ),
       ),
       drawer: const DrawerView(),
-      body: AppBody.appBody(context),
+      body: SizedBox(
+          width: 100.w, height: 100.h, child: AppBody.appBody(context)),
     ));
   }
 }
 
 class AppBody {
   static Stack appBody(BuildContext context) {
-    return const Stack(children: [
-      RandomView(),
-      SpookyView(),
-      PunView(),
-      DarkView(),
-      MiscellaneousView(),
-      FamousQuotesView(),
-      ProgrammingView(),
-      DadsView()
+    return Stack(children: [
+      refProvider.watch(ProviderAppBarStatus.randomJokes)
+          ? const RandomView()
+          : const SizedBox(),
+      refProvider.watch(ProviderAppBarStatus.spookyJokes)
+          ? const SpookyView()
+          : const SizedBox(),
+      refProvider.watch(ProviderAppBarStatus.punJokes)
+          ? const PunView()
+          : const SizedBox(),
+      const DarkView(),
+      refProvider.watch(ProviderAppBarStatus.miscellaneousJokes)
+          ? const MiscellaneousView()
+          : const SizedBox(),
+      refProvider.watch(ProviderAppBarStatus.programmingJokes)
+          ? const ProgrammingView()
+          : const SizedBox(),
+      refProvider.watch(ProviderAppBarStatus.dadsJokes)
+          ? const DadsView()
+          : const SizedBox()
     ]);
   }
 }

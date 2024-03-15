@@ -1,4 +1,8 @@
 import 'export.dart';
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:joke_app/model/apis/joke_varable.dart';
+import 'package:joke_app/model/provider/joke_provider.dart';
+
 
 class DrawerView extends StatelessWidget {
   const DrawerView({Key? key}) : super(key: key);
@@ -8,150 +12,129 @@ class DrawerView extends StatelessWidget {
     return Drawer(
       backgroundColor: AppThemes.whiteColor,
       width: AppConstantValues.width * 0.6,
-      child: SizedBox(
-        child: ListView(
-          children: [
-            const HeaderDrawer(),
-            SizedBox(
-              width: double.infinity,
-              height: 64.h,
-              child: SingleChildScrollView(
-                child: Column(children: [
-                  GestureDetector(
-                    onTap: () {
-                      MainScreenControls.isRandomClick();
-                      MainScreenControls.changeJokeTitle();
-                    },
-                    child: JokeList(
-                      text: 'Random',
-                      textColor:
-                          providerRef.watch(ProviderAppBarStatus.randomJokes)
-                              ? AppThemes.blackColor
-                              : AppThemes.grayColor,
+      child: Theme(
+        data: Theme.of(context).copyWith(
+          dividerTheme: DividerThemeData(color: AppThemes.blackColor),
+        ),
+        child: SizedBox(
+          child: ListView(
+            children: [
+              const HeaderDrawer(),
+              SizedBox(
+                width: double.infinity,
+                height: 64.h,
+                child: SingleChildScrollView(
+                  child: Column(children: [
+                    GestureDetector(
+                      onTap: () {
+                        MainScreenControls.isRandomClick();
+                        resetJokes();
+                        MainScreenControls.changeJokeTitle();
+                      },
+                      child: JokeList(
+                        text: 'Random',
+                        textColor:
+                            refProvider.watch(ProviderAppBarStatus.randomJokes)
+                                ? AppThemes.blackColor
+                                : AppThemes.grayColor,
+                      ),
                     ),
-                  ),
-                  Divider(
-                    color: AppThemes.blackColor,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      MainScreenControls.isSpookyClick();
-                      MainScreenControls.changeJokeTitle();
-                    },
-                    child: JokeList(
-                      text: 'Spooky',
-                      textColor:
-                          providerRef.watch(ProviderAppBarStatus.spookyJokes)
-                              ? AppThemes.blackColor
-                              : AppThemes.grayColor,
+                    GestureDetector(
+                      onTap: () {
+                        MainScreenControls.isSpookyClick();
+                        resetJokes();
+                        MainScreenControls.changeJokeTitle();
+                      },
+                      child: JokeList(
+                        text: 'Spooky',
+                        textColor:
+                           refProvider.watch(ProviderAppBarStatus.spookyJokes)
+                                ? AppThemes.blackColor
+                                : AppThemes.grayColor,
+                      ),
                     ),
-                  ),
-                  Divider(
-                    color: AppThemes.blackColor,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      MainScreenControls.isPunClick();
-                      MainScreenControls.changeJokeTitle();
-                    },
-                    child: JokeList(
-                      text: 'Pun',
-                      textColor:
-                          providerRef.watch(ProviderAppBarStatus.punJokes)
-                              ? AppThemes.blackColor
-                              : AppThemes.grayColor,
+                    GestureDetector(
+                      onTap: () {
+                        MainScreenControls.isPunClick();
+                        resetJokes();
+                        MainScreenControls.changeJokeTitle();
+                      },
+                      child: JokeList(
+                        text: 'Pun',
+                        textColor:
+                            refProvider.watch(ProviderAppBarStatus.punJokes)
+                                ? AppThemes.blackColor
+                                : AppThemes.grayColor,
+                      ),
                     ),
-                  ),
-                  Divider(
-                    color: AppThemes.blackColor,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      MainScreenControls.isDarkClick();
-                      MainScreenControls.changeJokeTitle();
-                    },
-                    child: JokeList(
-                      text: 'Dark',
-                      textColor:
-                          providerRef.watch(ProviderAppBarStatus.darkJokes)
-                              ? AppThemes.blackColor
-                              : AppThemes.grayColor,
+                    GestureDetector(
+                      onTap: () {
+                        MainScreenControls.isDarkClick();
+                        resetJokes();
+                        MainScreenControls.changeJokeTitle();
+                      },
+                      child: JokeList(
+                        text: 'Dark',
+                        textColor:
+                            refProvider.watch(ProviderAppBarStatus.darkJokes)
+                                ? AppThemes.blackColor
+                                : AppThemes.grayColor,
+                      ),
                     ),
-                  ),
-                  Divider(
-                    color: AppThemes.blackColor,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      MainScreenControls.isMiscellaneousClick();
-                      MainScreenControls.changeJokeTitle();
-                    },
-                    child: JokeList(
-                      text: 'Miscellaneous',
-                      textColor: providerRef
-                              .watch(ProviderAppBarStatus.miscellaneousJokes)
-                          ? AppThemes.blackColor
-                          : AppThemes.grayColor,
+                    GestureDetector(
+                      onTap: () {
+                        MainScreenControls.isMiscellaneousClick();
+                        resetJokes();
+                        MainScreenControls.changeJokeTitle();
+                      },
+                      child: JokeList(
+                        text: 'Miscellaneous',
+                        textColor: refProvider
+                                .watch(ProviderAppBarStatus.miscellaneousJokes)
+                            ? AppThemes.blackColor
+                            : AppThemes.grayColor,
+                      ),
                     ),
-                  ),
-                  Divider(
-                    color: AppThemes.blackColor,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      MainScreenControls.isFamousClick();
-                      MainScreenControls.changeJokeTitle();
-                    },
-                    child: JokeList(
-                      text: 'Famous Quotes',
-                      textColor:
-                          providerRef.watch(ProviderAppBarStatus.famousJokes)
-                              ? AppThemes.blackColor
-                              : AppThemes.grayColor,
+                  
+                    GestureDetector(
+                      onTap: () {
+                        MainScreenControls.isProgrammingClick();
+                        resetJokes();
+                        MainScreenControls.changeJokeTitle();
+                      },
+                      child: JokeList(
+                        text: 'Programming',
+                        textColor: refProvider
+                                .watch(ProviderAppBarStatus.programmingJokes)
+                            ? AppThemes.blackColor
+                            : AppThemes.grayColor,
+                      ),
                     ),
-                  ),
-                  Divider(
-                    color: AppThemes.blackColor,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      MainScreenControls.isProgrammingClick();
-                      MainScreenControls.changeJokeTitle();
-                    },
-                    child: JokeList(
-                      text: 'Programming',
-                      textColor: providerRef
-                              .watch(ProviderAppBarStatus.programmingJokes)
-                          ? AppThemes.blackColor
-                          : AppThemes.grayColor,
+                    GestureDetector(
+                      onTap: () {
+                        MainScreenControls.isDadsJokeClick();
+                        resetJokes();
+                        MainScreenControls.changeJokeTitle();
+                      },
+                      child: JokeList(
+                        text: 'Dads Joke',
+                        textColor:
+                            refProvider.watch(ProviderAppBarStatus.dadsJokes)
+                                ? AppThemes.blackColor
+                                : AppThemes.grayColor,
+                      ),
                     ),
-                  ),
-                  Divider(
-                    color: AppThemes.blackColor,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      MainScreenControls.isDadsJokeClick();
-                      MainScreenControls.changeJokeTitle();
-                    },
-                    child: JokeList(
-                      text: 'Dads Joke',
-                      textColor:
-                          providerRef.watch(ProviderAppBarStatus.dadsJokes)
-                              ? AppThemes.blackColor
-                              : AppThemes.grayColor,
-                    ),
-                  ),
-                ]),
+                  ]),
+                ),
               ),
-            ),
-            SizedBox(
-              height: 6.h,
-              width: double.infinity,
-              child:
-                  Center(child: Text('V 1.0', style: AppTextStyle.regular())),
-            )
-          ],
+              SizedBox(
+                height: 6.h,
+                width: double.infinity,
+                child:
+                    Center(child: Text('V 1.0', style: AppTextStyle.regular())),
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -172,14 +155,18 @@ class HeaderDrawer extends StatelessWidget {
             child: Center(
           child: Column(
             children: [
-              TextAnimation(
-                onPressed: () {},
-                text: 'I JOKES',
-                size: 27,
+              FittedBox(
+                child: TextAnimation(
+                  onPressed: () {},
+                  text: 'I JOKES',
+                  size: 27,
+                ),
               ),
-              Image.asset(
-                AppImages.laughingEmojiPng,
-                width: MediaQuery.of(context).size.width * 0.2,
+              FittedBox(
+                child: Image.asset(
+                  AppImages.laughingEmojiPng,
+                  width: 60,
+                ),
               )
             ],
           ),
@@ -199,10 +186,11 @@ class JokeList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       title: Center(
-        child: Text(text,
-            style: AppTextStyle.regular()
-                .copyWith(fontSize: 20.sp, color: textColor)),
-      ),
+          child: AutoSizeText(
+        text,
+        style: AppTextStyle.regular().copyWith(fontSize: 17, color: textColor),
+        maxLines: 2,
+      )),
     );
   }
 }
