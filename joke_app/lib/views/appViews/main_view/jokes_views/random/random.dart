@@ -1,4 +1,5 @@
 import '../export.dart';
+import 'package:joke_app/controller/copy_text.dart/copy.dart';
 
 class RandomView extends StatelessWidget {
   const RandomView({Key? key}) : super(key: key);
@@ -10,7 +11,7 @@ class RandomView extends StatelessWidget {
       var jokeText = ref.watch(singleJokeP);
       var setUpText = ref.watch(setUpP);
       var deliveryText = ref.watch(deliveryP);
-         var jokeLoading = refProvider.watch(isLoading);
+      var jokeLoading = refProvider.watch(isLoading);
       return StackBody(
         widget: jokeText.isEmpty && setUpText.isEmpty
             ? Column(
@@ -76,11 +77,9 @@ class RandomView extends StatelessWidget {
                       )
                     : const SizedBox(),
 
-        //
+        // to display  buttons to add to favorite and copy joke
         twoTaps: TwoTaps(
-          onPressedCopy: () {},
-          onPressedFavorite: () {},
-          color: Colors.grey,
+          onPressedCopy: () => CopyJoke.copyJoke(context),
         ),
         generateJoke: AppButton(
           onPressed: () => AppNetwork.networkState(context),

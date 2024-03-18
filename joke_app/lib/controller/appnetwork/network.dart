@@ -1,43 +1,32 @@
-import 'package:flutter/material.dart';
-import 'package:joke_app/model/apis/pun_api.dart';
-import 'package:joke_app/model/apis/dark_api.dart';
-import 'package:joke_app/model/apis/daddy_joke.dart';
-import 'package:joke_app/model/apis/random_api.dart';
-import 'package:joke_app/model/apis/spooky_api.dart';
-import 'package:joke_app/model/apis/programming_api.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:joke_app/model/provider/joke_provider.dart';
-import 'package:joke_app/model/apis/miscellaneous_joke.dart';
-import 'package:joke_app/model/provider/appbar_providers/main_screen_provider.dart';
+import '../export.dart';
+
 
 class AppNetwork {
   static networkState(BuildContext context) async {
     final connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.none) {
       // ignore: use_build_context_synchronously
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('No internet connection'),
-          duration: Duration(seconds: 2),
-        ),
-      );
+      CopyJoke.snackBar(context, 'No internet connection');
     } else {
       refProvider.read(isLoading.notifier).state = 'Loading';
-         var jokeLoading = refProvider.watch(isLoading);
-      print('isss $jokeLoading');
-
       if (refProvider.watch(ProviderAppBarStatus.randomJokes)) {
-        RandomApi.randomJoke();
+        MainScreenControls.apiChanging = '/joke/Any';
+        V2JokeApi.v2JokeApiCalling();
       } else if (refProvider.watch(ProviderAppBarStatus.spookyJokes)) {
-        SpookyApi.spookyApiJoke();
+        MainScreenControls.apiChanging = '/joke/Spooky';
+        V2JokeApi.v2JokeApiCalling();
       } else if (refProvider.watch(ProviderAppBarStatus.punJokes)) {
-        PunApi.punApiJoke();
+        MainScreenControls.apiChanging = '/joke/Pun';
+        V2JokeApi.v2JokeApiCalling();
       } else if (refProvider.watch(ProviderAppBarStatus.programmingJokes)) {
-        ProgrammingApi.programmingJoke();
+        MainScreenControls.apiChanging = '/joke/Programming';
+        V2JokeApi.v2JokeApiCalling();
       } else if (refProvider.watch(ProviderAppBarStatus.darkJokes)) {
-        DarkApi.darkJoke();
+        MainScreenControls.apiChanging = '/joke/Dark';
+        V2JokeApi.v2JokeApiCalling();
       } else if (refProvider.watch(ProviderAppBarStatus.miscellaneousJokes)) {
-        MiscellaneousApi.miscellaneousJoke();
+        MainScreenControls.apiChanging = '/joke/Miscellaneous';
+        V2JokeApi.v2JokeApiCalling();
       } else if (refProvider.watch(ProviderAppBarStatus.dadsJokes)) {
         DaddyApi.daddyJoke();
       }

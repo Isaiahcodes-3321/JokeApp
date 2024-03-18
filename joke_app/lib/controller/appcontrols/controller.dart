@@ -3,6 +3,9 @@ import 'package:joke_app/model/provider/appbar_providers/main_screen_provider.da
 
 class MainScreenControls {
   static String jokeTitle = 'Random Jokes';
+  static String apiChanging = '/joke/Any';
+  
+
   static changeJokeTitle() {
     if (refProvider.watch(ProviderAppBarStatus.randomJokes)) {
       jokeTitle = 'Random Jokes';
@@ -25,7 +28,7 @@ class MainScreenControls {
     refProvider.read(ProviderAppBarStatus.dadsJokes.notifier).state = false;
     refProvider.read(ProviderAppBarStatus.programmingJokes.notifier).state =
         false;
- 
+
     refProvider.read(ProviderAppBarStatus.miscellaneousJokes.notifier).state =
         false;
     refProvider.read(ProviderAppBarStatus.darkJokes.notifier).state = false;
@@ -64,7 +67,7 @@ class MainScreenControls {
     refProvider.read(ProviderAppBarStatus.dadsJokes.notifier).state = false;
     refProvider.read(ProviderAppBarStatus.programmingJokes.notifier).state =
         false;
-   
+
     refProvider.read(ProviderAppBarStatus.miscellaneousJokes.notifier).state =
         false;
     refProvider.read(ProviderAppBarStatus.randomJokes.notifier).state = false;
@@ -77,27 +80,25 @@ class MainScreenControls {
     refProvider.read(ProviderAppBarStatus.dadsJokes.notifier).state = false;
     refProvider.read(ProviderAppBarStatus.programmingJokes.notifier).state =
         false;
-  
+
     refProvider.read(ProviderAppBarStatus.randomJokes.notifier).state = false;
     refProvider.read(ProviderAppBarStatus.spookyJokes.notifier).state = false;
-   refProvider.read(ProviderAppBarStatus.punJokes.notifier).state = false;
-   refProvider.read(ProviderAppBarStatus.darkJokes.notifier).state = false;
-   refProvider.read(ProviderAppBarStatus.miscellaneousJokes.notifier).state =
+    refProvider.read(ProviderAppBarStatus.punJokes.notifier).state = false;
+    refProvider.read(ProviderAppBarStatus.darkJokes.notifier).state = false;
+    refProvider.read(ProviderAppBarStatus.miscellaneousJokes.notifier).state =
         true;
   }
-
-
 
   static isProgrammingClick() {
     refProvider.read(ProviderAppBarStatus.dadsJokes.notifier).state = false;
     refProvider.read(ProviderAppBarStatus.miscellaneousJokes.notifier).state =
         false;
-  
+
     refProvider.read(ProviderAppBarStatus.randomJokes.notifier).state = false;
     refProvider.read(ProviderAppBarStatus.spookyJokes.notifier).state = false;
     refProvider.read(ProviderAppBarStatus.punJokes.notifier).state = false;
     refProvider.read(ProviderAppBarStatus.darkJokes.notifier).state = false;
-  
+
     refProvider.read(ProviderAppBarStatus.programmingJokes.notifier).state =
         true;
   }
@@ -105,12 +106,12 @@ class MainScreenControls {
   static isDadsJokeClick() {
     refProvider.read(ProviderAppBarStatus.miscellaneousJokes.notifier).state =
         false;
- 
+
     refProvider.read(ProviderAppBarStatus.randomJokes.notifier).state = false;
     refProvider.read(ProviderAppBarStatus.spookyJokes.notifier).state = false;
     refProvider.read(ProviderAppBarStatus.punJokes.notifier).state = false;
     refProvider.read(ProviderAppBarStatus.darkJokes.notifier).state = false;
- 
+
     refProvider.read(ProviderAppBarStatus.programmingJokes.notifier).state =
         false;
     refProvider.read(ProviderAppBarStatus.dadsJokes.notifier).state = true;

@@ -27,27 +27,28 @@ class _SplashViewState extends State<SplashView> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Scaffold(
-      body: SizedBox(
-        width: 100.w,
-        height: 100.h,
-        child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              // ignore: deprecated_member_use
-              TextAnimation(
-                onPressed: (){},
-                text: "I JOKES",
-                size: 33,
-              ),
-              Image.asset(
-                AppImages.laughingEmojiPng,
-                width: 50.w,
-              )
-            ]),
+    return Scaffold(
+      body: SafeArea(
+        child: SizedBox(
+          width: 100.w,
+          height: 100.h,
+          child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                // ignore: deprecated_member_use
+                TextAnimation(
+                  onPressed: () {},
+                  text: "I JOKES",
+                  size: 33,
+                ),
+                Image.asset(
+                  AppImages.laughingEmojiPng,
+                  width: 50.w,
+                )
+              ]),
+        ),
       ),
-    ));
+    );
   }
 }

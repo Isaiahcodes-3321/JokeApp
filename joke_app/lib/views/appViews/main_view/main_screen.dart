@@ -1,5 +1,9 @@
 import 'export.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:joke_app/model/apis/joke_varable.dart';
 import 'package:joke_app/model/provider/joke_provider.dart';
+import 'package:joke_app/views/appViews/favorite_view/favorite.dart';
 
 class MainView extends ConsumerWidget {
   const MainView({Key? key}) : super(key: key);
@@ -9,23 +13,68 @@ class MainView extends ConsumerWidget {
     final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
     refProvider = ref;
-    return SafeArea(
-        child: Scaffold(
+    return Scaffold(
       key: _scaffoldKey,
       backgroundColor: AppThemes.backgroundColor,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(8.h),
         child: MyAppBar(
+          naveIcon: Icons.menu_open_rounded,
           text: MainScreenControls.jokeTitle,
           onPressed: () {
+            resetJokes();
             _scaffoldKey.currentState?.openDrawer();
+            refProvider.read(isLoading.notifier).state = '';
           },
+          popupMenuButton: PopupMenuButton(
+            iconSize: 23,
+            itemBuilder: (context) => [
+              PopupMenuItem(
+                  height: 4.h,
+                  onTap: () {
+                    Navigator.of(context).push<void>(CupertinoPageRoute(
+                      builder: (context) {
+                        return const FavoriteView();
+                      },
+                    ));
+                  },
+                  child: Row(
+                    children: [
+                      const Icon(
+                        Icons.star_border_rounded,
+                        size: 20,
+                      ),
+                      FittedBox(
+                        child: TextAnimation(
+                          onPressed: () {
+                            Navigator.of(context).push<void>(CupertinoPageRoute(
+                              builder: (context) {
+                                return const FavoriteView();
+                              },
+                            ));
+                          },
+                          text: 'Favorite',
+                          size: 17,
+                        ),
+                      ),
+                    ],
+                  ))
+            ],
+          ),
         ),
       ),
       drawer: const DrawerView(),
-      body: SizedBox(
-          width: 100.w, height: 100.h, child: AppBody.appBody(context)),
-    ));
+      body: PopScope(
+        canPop: true,
+        onPopInvoked: (didPop) {
+          SystemNavigator.pop();
+        },
+        child: SafeArea(
+          child: SizedBox(
+              width: 100.w, height: 100.h, child: AppBody.appBody(context)),
+        ),
+      ),
+    );
   }
 }
 

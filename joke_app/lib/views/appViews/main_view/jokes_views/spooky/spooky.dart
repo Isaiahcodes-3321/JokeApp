@@ -1,4 +1,5 @@
 import '../export.dart';
+import 'package:joke_app/controller/copy_text.dart/copy.dart';
 
 class SpookyView extends StatelessWidget {
   const SpookyView({Key? key}) : super(key: key);
@@ -77,11 +78,9 @@ class SpookyView extends StatelessWidget {
                       )
                     : const SizedBox(),
 
-        //
+        // to display  buttons to add to favorite and copy joke
         twoTaps: TwoTaps(
-          onPressedCopy: () {},
-          onPressedFavorite: () {},
-          color: Colors.grey,
+          onPressedCopy: () => CopyJoke.copyJoke(context),
         ),
         generateJoke: AppButton(
           onPressed: () => AppNetwork.networkState(context),

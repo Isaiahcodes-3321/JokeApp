@@ -24,7 +24,7 @@ class StackBody extends StatelessWidget {
             location: BannerLocation.topStart,
             color: AppThemes.orangeColor,
             child: Container(
-              width: 85.w,
+              width: 90.w,
               height: 60.h,
               decoration: BoxDecoration(
                   color: AppThemes.whiteColor,

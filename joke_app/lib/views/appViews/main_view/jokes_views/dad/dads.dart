@@ -1,4 +1,5 @@
 import '../export.dart';
+import 'package:joke_app/controller/copy_text.dart/copy.dart';
 
 class DadsView extends StatelessWidget {
   const DadsView({Key? key}) : super(key: key);
@@ -8,7 +9,7 @@ class DadsView extends StatelessWidget {
     return Consumer(builder: (context, ref, _) {
       refProvider = ref;
       var jokeText = ref.watch(singleJokeP);
-         var jokeLoading = refProvider.watch(isLoading);
+      var jokeLoading = refProvider.watch(isLoading);
 
       return StackBody(
         widget: jokeText.isEmpty
@@ -46,11 +47,9 @@ class DadsView extends StatelessWidget {
                 ],
               ),
 
-        //
+        // to display  buttons to add to favorite and copy joke
         twoTaps: TwoTaps(
-          onPressedCopy: () {},
-          onPressedFavorite: () {},
-          color: Colors.grey,
+          onPressedCopy: () => CopyJoke.copyJoke(context),
         ),
         generateJoke: AppButton(
           onPressed: () => AppNetwork.networkState(context),

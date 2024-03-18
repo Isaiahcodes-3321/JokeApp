@@ -1,6 +1,7 @@
+import 'package:hive/hive.dart';
 import 'package:flutter/material.dart';
 import 'package:joke_app/views/appThemes/themes.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:joke_app/model/storage/joke_storage.dart';
 
 class AppConstantValues {
   static late double width;
@@ -17,7 +18,7 @@ class AppTextStyle {
 
   static TextStyle regular() {
     return TextStyle(
-        fontSize: 18.sp,
+        fontSize: 18,
         color: AppThemes.blackColor,
         fontFamily: fontFamily,
         fontWeight: FontWeight.normal);
@@ -25,9 +26,13 @@ class AppTextStyle {
 
   static TextStyle bold() {
     return TextStyle(
-        fontSize: 18.sp,
+        fontSize: 18,
         color: AppThemes.blackColor,
         fontFamily: fontFamily,
         fontWeight: FontWeight.bold);
   }
 }
+
+// variable holding the hive box
+late Box<JokeStorage> jokeStorage;
+

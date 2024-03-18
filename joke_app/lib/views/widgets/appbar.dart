@@ -3,8 +3,14 @@ import 'export.dart';
 class MyAppBar extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
-  const MyAppBar({Key? key, required this.text, required this.onPressed})
-      : super(key: key);
+  final Widget popupMenuButton;
+  final IconData naveIcon;
+ const MyAppBar(
+      {super.key,
+      required this.text,
+      required this.onPressed,
+      required this.naveIcon,
+      required this.popupMenuButton});
 
   @override
   Widget build(BuildContext context) {
@@ -28,29 +34,12 @@ class MyAppBar extends StatelessWidget {
       leading: IconButton(
           onPressed: onPressed,
           icon: Icon(
-            Icons.menu_open_rounded,
+            naveIcon,
             color: AppThemes.blackColor,
             size: 23,
           )),
       actions: [
-        PopupMenuButton(
-          iconSize: 23,
-          itemBuilder: (context) => [
-            PopupMenuItem(
-                height: 4.h,
-                onTap: () {},
-                child: Row(
-                  children: [
-                   const Icon(Icons.star_border_rounded, size: 20,),
-                    TextAnimation(
-                      onPressed: () {},
-                      text: 'Favorite',
-                      size: 19.sp,
-                    ),
-                  ],
-                ))
-          ],
-        )
+        popupMenuButton,
       ],
     );
   }

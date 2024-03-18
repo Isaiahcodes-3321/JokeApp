@@ -1,6 +1,5 @@
 import 'export.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:joke_app/model/apis/joke_varable.dart';
 import 'package:joke_app/model/provider/joke_provider.dart';
 
 
@@ -28,7 +27,6 @@ class DrawerView extends StatelessWidget {
                     GestureDetector(
                       onTap: () {
                         MainScreenControls.isRandomClick();
-                        resetJokes();
                         MainScreenControls.changeJokeTitle();
                       },
                       child: JokeList(
@@ -42,7 +40,6 @@ class DrawerView extends StatelessWidget {
                     GestureDetector(
                       onTap: () {
                         MainScreenControls.isSpookyClick();
-                        resetJokes();
                         MainScreenControls.changeJokeTitle();
                       },
                       child: JokeList(
@@ -56,7 +53,6 @@ class DrawerView extends StatelessWidget {
                     GestureDetector(
                       onTap: () {
                         MainScreenControls.isPunClick();
-                        resetJokes();
                         MainScreenControls.changeJokeTitle();
                       },
                       child: JokeList(
@@ -70,7 +66,6 @@ class DrawerView extends StatelessWidget {
                     GestureDetector(
                       onTap: () {
                         MainScreenControls.isDarkClick();
-                        resetJokes();
                         MainScreenControls.changeJokeTitle();
                       },
                       child: JokeList(
@@ -84,7 +79,6 @@ class DrawerView extends StatelessWidget {
                     GestureDetector(
                       onTap: () {
                         MainScreenControls.isMiscellaneousClick();
-                        resetJokes();
                         MainScreenControls.changeJokeTitle();
                       },
                       child: JokeList(
@@ -99,7 +93,7 @@ class DrawerView extends StatelessWidget {
                     GestureDetector(
                       onTap: () {
                         MainScreenControls.isProgrammingClick();
-                        resetJokes();
+                        
                         MainScreenControls.changeJokeTitle();
                       },
                       child: JokeList(
@@ -113,7 +107,6 @@ class DrawerView extends StatelessWidget {
                     GestureDetector(
                       onTap: () {
                         MainScreenControls.isDadsJokeClick();
-                        resetJokes();
                         MainScreenControls.changeJokeTitle();
                       },
                       child: JokeList(
