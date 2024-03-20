@@ -7,6 +7,6 @@ export 'package:joke_app/controller/copy_text.dart/copy.dart';
 export 'package:joke_app/controller/appcontrols/controller.dart';
 export 'package:joke_app/model/provider/appbar_providers/main_screen_provider.dart';
 export 'package:clipboard/clipboard.dart';
-export 'package:joke_app/views/appThemes/themes.dart';
+export 'package:joke_app/views/app_themes/themes.dart';
 export 'package:joke_app/views/constant/constant.dart';
 

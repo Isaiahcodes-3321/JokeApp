@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:joke_app/views/approute/route.dart';
 import 'package:joke_app/views/constant/constant.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:joke_app/views/appThemes/appImages.dart';
+import 'package:joke_app/views/app_themes/appImages.dart';
 import 'package:joke_app/views/widgets/text_animation.dart';
 
 class SplashView extends StatefulWidget {

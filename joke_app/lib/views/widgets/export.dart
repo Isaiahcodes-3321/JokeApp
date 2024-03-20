@@ -1,5 +1,5 @@
 export 'package:flutter/material.dart';
-export 'package:joke_app/views/appThemes/themes.dart';
+export 'package:joke_app/views/app_themes/themes.dart';
 export 'package:responsive_sizer/responsive_sizer.dart';
 export 'package:joke_app/views/widgets/text_animation.dart';
 export 'package:joke_app/views/constant/constant.dart';

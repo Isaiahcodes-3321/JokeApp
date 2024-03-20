@@ -1,6 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:flutter/material.dart';
-import 'package:joke_app/views/appThemes/themes.dart';
+import 'package:joke_app/views/app_themes/themes.dart';
 import 'package:joke_app/model/storage/joke_storage.dart';
 
 class AppConstantValues {

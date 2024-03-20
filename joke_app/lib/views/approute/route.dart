@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:joke_app/views/appViews/main_view/main_screen.dart';
-import 'package:joke_app/views/appViews/splash_view/splash_view.dart';
+import 'package:joke_app/views/app_views/main_view/main_screen.dart';
+import 'package:joke_app/views/app_views/splash_view/splash_view.dart';
 
 class AppRoute{
 

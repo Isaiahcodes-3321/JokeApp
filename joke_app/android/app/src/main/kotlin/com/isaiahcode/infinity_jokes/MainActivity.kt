@@ -1,4 +1,4 @@
-package com.example.joke_app
+package com.isaiahcode.infinity_jokes
 
 import io.flutter.embedding.android.FlutterActivity
 

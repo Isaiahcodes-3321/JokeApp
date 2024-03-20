@@ -1,6 +1,6 @@
 import 'export.dart';
 import 'package:joke_app/model/provider/joke_provider.dart';
-import 'package:joke_app/views/appViews/main_view/export.dart';
+import 'package:joke_app/views/app_views/main_view/export.dart';
 import 'package:joke_app/controller/joke_stored_controls/joke_stored_controls.dart';
 
 class TwoTaps extends StatelessWidget {

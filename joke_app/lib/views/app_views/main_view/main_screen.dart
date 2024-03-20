@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:joke_app/model/apis/joke_varable.dart';
 import 'package:joke_app/model/provider/joke_provider.dart';
-import 'package:joke_app/views/appViews/favorite_view/favorite.dart';
+import 'package:joke_app/views/app_views/favorite_view/favorite.dart';
 
 class MainView extends ConsumerWidget {
   const MainView({Key? key}) : super(key: key);

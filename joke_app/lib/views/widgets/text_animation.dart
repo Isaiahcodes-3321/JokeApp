@@ -5,7 +5,7 @@ class TextAnimation extends StatelessWidget {
   final String text;
   final double size;
    final VoidCallback onPressed;
-  const TextAnimation({Key? key, required this.text, required this.size, required this.onPressed}) : super(key: key);
+  const TextAnimation({super.key, required this.text, required this.size, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
