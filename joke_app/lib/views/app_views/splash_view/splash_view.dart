@@ -19,7 +19,7 @@ class _SplashViewState extends State<SplashView> {
   initState() {
     super.initState();
     // Wait for 5 seconds, then navigate to the main screen
-    Timer(const Duration(seconds: 6), () {
+    Timer(const Duration(seconds: 5), () {
       AppConstantValues.setWidthAndHeight(context);
       context.goNamed(AppRoute.mainView);
     });

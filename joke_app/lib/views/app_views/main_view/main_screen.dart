@@ -3,7 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:joke_app/model/apis/joke_varable.dart';
 import 'package:joke_app/model/provider/joke_provider.dart';
+import 'package:joke_app/views/app_views/Ads/bannar_ads.dart';
 import 'package:joke_app/views/app_views/favorite_view/favorite.dart';
+
 
 class MainView extends ConsumerWidget {
   const MainView({Key? key}) : super(key: key);
@@ -99,7 +101,9 @@ class AppBody {
           : const SizedBox(),
       refProvider.watch(ProviderAppBarStatus.dadsJokes)
           ? const DadsView()
-          : const SizedBox()
+          : const SizedBox(),
+      // const AppBanner(),
     ]);
   }
 }
+

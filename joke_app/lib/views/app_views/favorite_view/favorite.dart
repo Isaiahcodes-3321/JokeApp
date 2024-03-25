@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:clipboard/clipboard.dart';
 import 'package:joke_app/model/storage/joke_storage.dart';
 import 'package:swiping_card_deck/swiping_card_deck.dart';
+import 'package:joke_app/views/app_views/Ads/bannar_ads.dart';
 import 'package:joke_app/controller/copy_text.dart/copy.dart';
 import 'package:joke_app/views/app_views/main_view/export.dart';
 import 'package:joke_app/views/app_views/main_view/main_screen.dart';
@@ -38,46 +39,52 @@ class _FavoriteViewState extends State<FavoriteView> {
           child: SizedBox(
         width: 100.w,
         height: 100.h,
-        child: Center(
-          child: SwipingCardDeck(
-            cardDeck: List.generate(
-              getJokes.length,
-              (index) => jokeCardWidget(index, getJokes[index].jokeStored, () {
-                setState(() {
-                  // print('to delete joke');
-                  jokeStorage.deleteAt(index);
-                });
-              }, () {
-                // print('to copy joke');
-                FlutterClipboard.copy(getJokes[index].jokeStored)
-                    .then((value) => CopyJoke.snackBar(context, "Joke Copied"));
-              }),
-            ),
-            onDeckEmpty: () => setState(() {
-              List.generate(
-                getJokes.length,
-                (index) =>
-                    jokeCardWidget(index, getJokes[index].jokeStored, () {
-                  setState(() {
-                    // print('to delete joke');
-                    jokeStorage.deleteAt(index);
-                  });
-                }, () {
-                  // print('to copy joke');
-                  FlutterClipboard.copy(getJokes[index].jokeStored).then(
-                      (value) => CopyJoke.snackBar(context, "Joke Copied"));
+        child: Column( crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // const FullAds(),
+            Center(
+              child: SwipingCardDeck(
+                cardDeck: List.generate(
+                  getJokes.length,
+                  (index) => jokeCardWidget(index, getJokes[index].jokeStored, () {
+                    setState(() {
+                      // print('to delete joke');
+                      jokeStorage.deleteAt(index);
+                    });
+                  }, () {
+                    // print('to copy joke');
+                    FlutterClipboard.copy(getJokes[index].jokeStored)
+                        .then((value) => CopyJoke.snackBar(context, "Joke Copied"));
+                  }),
+                ),
+                onDeckEmpty: () => setState(() {
+                  List.generate(
+                    getJokes.length,
+                    (index) =>
+                        jokeCardWidget(index, getJokes[index].jokeStored, () {
+                      setState(() {
+                        // print('to delete joke');
+                        jokeStorage.deleteAt(index);
+                      });
+                    }, () {
+                      // print('to copy joke');
+                      FlutterClipboard.copy(getJokes[index].jokeStored).then(
+                          (value) => CopyJoke.snackBar(context, "Joke Copied"));
+                    }),
+                  );
                 }),
-              );
-            }),
-            onLeftSwipe: (Card card) => debugPrint("Swiped left!"),
-            onRightSwipe: (Card card) => debugPrint("Swiped right!"),
-            swipeThreshold: MediaQuery.of(context).size.width / 4,
-            minimumVelocity: 500,
-            cardWidth: 80.w,
-            rotationFactor: 0.8 / 3.14,
-            swipeAnimationDuration: const Duration(milliseconds: 500),
-            disableDragging: false,
-          ),
+                onLeftSwipe: (Card card) => debugPrint("Swiped left!"),
+                onRightSwipe: (Card card) => debugPrint("Swiped right!"),
+                swipeThreshold: MediaQuery.of(context).size.width / 4,
+                minimumVelocity: 500,
+                cardWidth: 80.w,
+                rotationFactor: 0.8 / 3.14,
+                swipeAnimationDuration: const Duration(milliseconds: 500),
+                disableDragging: false,
+              ),
+            ),
+          ],
         ),
       )),
     );
