@@ -6,7 +6,6 @@ import 'package:joke_app/model/provider/joke_provider.dart';
 import 'package:joke_app/views/app_views/Ads/bannar_ads.dart';
 import 'package:joke_app/views/app_views/favorite_view/favorite.dart';
 
-
 class MainView extends ConsumerWidget {
   const MainView({Key? key}) : super(key: key);
 
@@ -19,7 +18,7 @@ class MainView extends ConsumerWidget {
       key: _scaffoldKey,
       backgroundColor: AppThemes.backgroundColor,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(8.h),
+        preferredSize: const Size.fromHeight(50),
         child: MyAppBar(
           naveIcon: Icons.menu_open_rounded,
           text: MainScreenControls.jokeTitle,
@@ -29,7 +28,7 @@ class MainView extends ConsumerWidget {
             refProvider.read(isLoading.notifier).state = '';
           },
           popupMenuButton: PopupMenuButton(
-            iconSize: 23,
+            iconSize: 24,
             itemBuilder: (context) => [
               PopupMenuItem(
                   height: 4.h,
@@ -44,20 +43,18 @@ class MainView extends ConsumerWidget {
                     children: [
                       const Icon(
                         Icons.star_border_rounded,
-                        size: 20,
+                        size: 23,
                       ),
-                      FittedBox(
-                        child: TextAnimation(
-                          onPressed: () {
-                            Navigator.of(context).push<void>(CupertinoPageRoute(
-                              builder: (context) {
-                                return const FavoriteView();
-                              },
-                            ));
-                          },
-                          text: 'Favorite',
-                          size: 17,
-                        ),
+                      TextAnimation(
+                        onPressed: () {
+                          Navigator.of(context).push<void>(CupertinoPageRoute(
+                            builder: (context) {
+                              return const FavoriteView();
+                            },
+                          ));
+                        },
+                        text: 'Favorite',
+                        size: 17,
                       ),
                     ],
                   ))
@@ -102,8 +99,7 @@ class AppBody {
       refProvider.watch(ProviderAppBarStatus.dadsJokes)
           ? const DadsView()
           : const SizedBox(),
-      // const AppBanner(),
+      const AppBanner(),
     ]);
   }
 }
-

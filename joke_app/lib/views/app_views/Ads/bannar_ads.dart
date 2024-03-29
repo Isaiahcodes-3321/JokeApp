@@ -17,7 +17,7 @@ class _AppBannerState extends State<AppBanner> {
 
   BannerAd? bannerAd;
   bool isLoaded = false;
-  var adUnit = "ca-app-pub-3940256099942544/6300978111";
+  var adUnit = "ca-app-pub-9001354602970088/3875837619";
 
   void loadAd() {
     bannerAd = BannerAd(
@@ -35,7 +35,6 @@ class _AppBannerState extends State<AppBanner> {
         // Called when an ad request failed.
         onAdFailedToLoad: (ad, err) {
           debugPrint('BannerAd failed to load: $err');
-          // Dispose the ad here to free resources.
           ad.dispose();
         },
       ),
@@ -64,7 +63,10 @@ class FullAds extends StatefulWidget {
 class _FullAdsState extends State<FullAds> {
   InterstitialAd? interstitialAd;
   bool isLoaded = false;
-  final adUnit = "ca-app-pub-3940256099942544/1033173712";
+   // testing Aads
+  // final adUnit = "ca-app-pub-3940256099942544/1033173712";
+  // real ads
+  final adUnit = "ca-app-pub-9001354602970088/1530027258";
 
   void loadAd() {
     InterstitialAd.load(

@@ -25,20 +25,16 @@ class TwoTaps extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          FittedBox(
-            child: IconButton(
-              icon: const Icon(Icons.star_border_rounded, size: 30),
-              onPressed: () async {
-                await JokeControls.addJoke(context);
-              },
-              color: isIconClick ? AppThemes.blackColor : AppThemes.grayColor,
-            ),
+          IconButton(
+            icon: const Icon(Icons.star_border_rounded, size: 30),
+            onPressed: () async {
+              await JokeControls.addJoke(context);
+            },
+            color: isIconClick ? AppThemes.blackColor : AppThemes.grayColor,
           ),
-          FittedBox(
-            child: IconButton(
-              icon: const Icon(Icons.content_copy, size: 25),
-              onPressed: onPressedCopy,
-            ),
+          IconButton(
+            icon: const Icon(Icons.content_copy, size: 25),
+            onPressed: onPressedCopy,
           ),
         ],
       ),

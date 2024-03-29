@@ -21,12 +21,10 @@ class MyAppBar extends StatelessWidget {
       title: SizedBox(
         width: 60.w,
         child: Center(
-          child: FittedBox(
-            child: TextAnimation(
-              onPressed: () {},
-              text: text,
-              size: 20.sp,
-            ),
+          child: TextAnimation(
+            onPressed: () {},
+            text: text,
+            size: 18,
           ),
         ),
       ),
@@ -36,7 +34,7 @@ class MyAppBar extends StatelessWidget {
           icon: Icon(
             naveIcon,
             color: AppThemes.blackColor,
-            size: 23,
+            size: 24,
           )),
       actions: [
         popupMenuButton,

@@ -37,6 +37,7 @@
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-9001354602970088~6809547740"/>
             
+            
     </application>
     <!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package="com.isaiahcode.infinity_jokes">

@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
-import 'package:clipboard/clipboard.dart';
+import 'package:joke_app/controller/export.dart';
 import 'package:joke_app/model/storage/joke_storage.dart';
 import 'package:swiping_card_deck/swiping_card_deck.dart';
 import 'package:joke_app/views/app_views/Ads/bannar_ads.dart';
-import 'package:joke_app/controller/copy_text.dart/copy.dart';
 import 'package:joke_app/views/app_views/main_view/export.dart';
 import 'package:joke_app/views/app_views/main_view/main_screen.dart';
 
@@ -23,7 +22,7 @@ class _FavoriteViewState extends State<FavoriteView> {
     return Scaffold(
       backgroundColor: AppThemes.backgroundColor,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(8.h),
+        preferredSize: const Size.fromHeight(50),
         child: MyAppBar(
           naveIcon: Icons.arrow_back_rounded,
           onPressed: () => Navigator.of(context).push<void>(CupertinoPageRoute(
@@ -42,7 +41,7 @@ class _FavoriteViewState extends State<FavoriteView> {
         child: Column( crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // const FullAds(),
+            const FullAds(),
             Center(
               child: SwipingCardDeck(
                 cardDeck: List.generate(
