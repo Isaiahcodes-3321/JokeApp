@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:joke_app/model/apis/joke_varable.dart';
 import 'package:joke_app/model/provider/joke_provider.dart';
 import 'package:joke_app/views/app_views/Ads/bannar_ads.dart';
+import 'package:joke_app/views/app_views/deve_mode/dev_mode.dart';
 import 'package:joke_app/views/app_views/favorite_view/favorite.dart';
 
 class MainView extends ConsumerWidget {
@@ -39,25 +40,59 @@ class MainView extends ConsumerWidget {
                       },
                     ));
                   },
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          const Icon(
+                            Icons.star_border_rounded,
+                            size: 23,
+                          ),
+                          TextAnimation(
+                            onPressed: () {
+                              Navigator.of(context)
+                                  .push<void>(CupertinoPageRoute(
+                                builder: (context) {
+                                  return const FavoriteView();
+                                },
+                              ));
+                            },
+                            text: 'Favorite',
+                            size: 17,
+                          ),
+                        ],
+                      ),
+                      Divider()
+                    ],
+                  )),
+              PopupMenuItem(
+                  height: 4.h,
+                  onTap: () {
+                    Navigator.of(context).push<void>(CupertinoPageRoute(
+                      builder: (context) {
+                        return const FavoriteView();
+                      },
+                    ));
+                  },
                   child: Row(
                     children: [
                       const Icon(
-                        Icons.star_border_rounded,
+                        Icons.person_3_outlined,
                         size: 23,
                       ),
                       TextAnimation(
                         onPressed: () {
                           Navigator.of(context).push<void>(CupertinoPageRoute(
                             builder: (context) {
-                              return const FavoriteView();
+                              return const DevPage();
                             },
                           ));
                         },
-                        text: 'Favorite',
+                        text: 'Dev Mode',
                         size: 17,
                       ),
                     ],
-                  ))
+                  )),
             ],
           ),
         ),

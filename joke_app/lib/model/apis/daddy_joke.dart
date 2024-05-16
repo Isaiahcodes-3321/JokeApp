@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:joke_app/model/apis/joke_varable.dart';
 import 'package:joke_app/model/provider/joke_provider.dart';
+// ignore_for_file: avoid_print
+
 
 class DaddyApi {
   static Future daddyJoke() async {

@@ -1,5 +1,7 @@
 import 'package:joke_app/controller/export.dart';
 import 'package:joke_app/model/storage/joke_storage.dart';
+// ignore_for_file: use_build_context_synchronously
+
 
 class JokeControls {
   static addJoke(BuildContext context) async {

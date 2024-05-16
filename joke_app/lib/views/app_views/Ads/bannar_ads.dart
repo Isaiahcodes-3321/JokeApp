@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
@@ -13,6 +14,9 @@ class _AppBannerState extends State<AppBanner> {
   initState() {
     super.initState();
     loadAd();
+    Timer(const Duration(seconds: 50), () {
+      loadAd();
+    });
   }
 
   BannerAd? bannerAd;
@@ -61,25 +65,36 @@ class FullAds extends StatefulWidget {
 }
 
 class _FullAdsState extends State<FullAds> {
+  @override
+  void initState() {
+    super.initState();
+    showInterstitialAd();
+    loadAd();
+    Timer(const Duration(seconds: 40), () {
+      showInterstitialAd();
+      loadAd();
+    });
+  }
+
   InterstitialAd? interstitialAd;
   bool isLoaded = false;
-   // testing Aads
+  // testing Aads
   // final adUnit = "ca-app-pub-3940256099942544/1033173712";
   // real ads
   final adUnit = "ca-app-pub-9001354602970088/1530027258";
 
-  void loadAd() {
+  Future loadAd() async {
     InterstitialAd.load(
       adUnitId: adUnit,
       request: const AdRequest(),
       adLoadCallback: InterstitialAdLoadCallback(
-        onAdLoaded: (ad) {
+        onAdLoaded: (ad) async {
           debugPrint('$ad loaded.');
           interstitialAd = ad;
           setState(() {
             isLoaded = true;
           });
-          showInterstitialAd();
+          await showInterstitialAd();
         },
         onAdFailedToLoad: (err) {
           debugPrint('InterstitialAd failed to load: $err');
@@ -88,19 +103,12 @@ class _FullAdsState extends State<FullAds> {
     );
   }
 
-  void showInterstitialAd() {
+  Future showInterstitialAd() async {
     if (isLoaded) {
-      interstitialAd?.show();
+      await interstitialAd?.show();
     } else {
       debugPrint('InterstitialAd not loaded yet.');
     }
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    showInterstitialAd();
-    loadAd();
   }
 
   // @override
