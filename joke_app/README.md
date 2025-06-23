@@ -20,8 +20,8 @@ Here are some glimpses of the Joke App in action:
 | **Splash Screen** | ![Splash Screen](jokes_images/Splashview.jpg)  | The initial loading screen when the app starts. |
 | **Home View** | ![Home View 1](jokes_images/Homeview.jpg)    | The main screen where random jokes are displayed. |
 | **Home View 2** | ![Home View 2](jokes_images/Joksdisplayed.jpg)    | Showing how a joke is presented to the user.    |
-| **Joke Categories** | ![Joke Categories](jokes_images/Jocks sections.jpg) | The screen to select different joke types.      |
-| **Favorite Jokes** | ![Favorite Jokes](jokes_images/Favourite section.jpg) | Where all your saved jokes reside.              |
+| **Joke Categories** | ![Joke Categories](jokes_images/Jockssections.jpg) | The screen to select different joke types.      |
+| **Favorite Jokes** | ![Favorite Jokes](jokes_images/Favouritesection.jpg) | Where all your saved jokes reside.              |
 
 
 ## Getting Started
