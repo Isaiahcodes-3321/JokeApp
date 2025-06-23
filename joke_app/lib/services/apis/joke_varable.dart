@@ -1,4 +1,4 @@
-import 'package:joke_app/model/provider/joke_provider.dart';
+import 'package:joke_app/services/provider/joke_provider.dart';
 
 String singleJoke = '';
 String multipleJokeSetup = '';

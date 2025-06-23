@@ -1,5 +1,5 @@
-import 'package:joke_app/model/provider/joke_provider.dart';
-import 'package:joke_app/model/provider/appbar_providers/main_screen_provider.dart';
+import 'package:joke_app/services/provider/joke_provider.dart';
+import 'package:joke_app/services/provider/appbar_providers/main_screen_provider.dart';
 
 class MainScreenControls {
   static String jokeTitle = 'Random Jokes';

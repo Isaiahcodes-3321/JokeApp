@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:joke_app/model/apis/joke_varable.dart';
-import 'package:joke_app/model/provider/joke_provider.dart';
+import 'package:joke_app/services/apis/joke_varable.dart';
+import 'package:joke_app/services/provider/joke_provider.dart';
 import 'package:joke_app/controller/appcontrols/controller.dart';
 
 class V2JokeApi {

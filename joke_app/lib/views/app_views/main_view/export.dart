@@ -1,6 +1,6 @@
 export 'package:joke_app/views/app_themes/appImages.dart';
 export 'package:joke_app/views/widgets/text_animation.dart';
-export 'package:joke_app/model/provider/appbar_providers/main_screen_provider.dart';
+export 'package:joke_app/services/provider/appbar_providers/main_screen_provider.dart';
 export 'package:flutter_riverpod/flutter_riverpod.dart';
 export 'package:joke_app/controller/appcontrols/controller.dart';
 export 'package:joke_app/views/app_views/main_view/jokes_views/pun/pun.dart';

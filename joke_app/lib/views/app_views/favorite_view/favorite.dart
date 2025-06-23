@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:joke_app/controller/export.dart';
-import 'package:joke_app/model/storage/joke_storage.dart';
+import 'package:joke_app/services/storage/joke_storage.dart';
 import 'package:swiping_card_deck/swiping_card_deck.dart';
 import 'package:joke_app/views/app_views/Ads/bannar_ads.dart';
 import 'package:joke_app/views/app_views/main_view/export.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'model/storage/joke_storage.dart';
+import 'services/storage/joke_storage.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:joke_app/views/approute/route.dart';
 import 'package:joke_app/views/constant/constant.dart';

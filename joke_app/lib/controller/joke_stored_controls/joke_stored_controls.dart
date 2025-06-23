@@ -1,5 +1,5 @@
 import 'package:joke_app/controller/export.dart';
-import 'package:joke_app/model/storage/joke_storage.dart';
+import 'package:joke_app/services/storage/joke_storage.dart';
 // ignore_for_file: use_build_context_synchronously
 
 

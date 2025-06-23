@@ -1,8 +1,8 @@
 import 'export.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:joke_app/model/apis/joke_varable.dart';
-import 'package:joke_app/model/provider/joke_provider.dart';
+import 'package:joke_app/services/apis/joke_varable.dart';
+import 'package:joke_app/services/provider/joke_provider.dart';
 import 'package:joke_app/views/app_views/Ads/bannar_ads.dart';
 import 'package:joke_app/views/app_views/deve_mode/dev_mode.dart';
 import 'package:joke_app/views/app_views/favorite_view/favorite.dart';

@@ -1,6 +1,6 @@
 import 'export.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:joke_app/model/provider/joke_provider.dart';
+import 'package:joke_app/services/provider/joke_provider.dart';
 
 
 class DrawerView extends StatelessWidget {
