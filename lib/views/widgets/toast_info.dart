@@ -18,7 +18,6 @@ class Toast {
 class JokeAppToast {
   static final FToast _fToast = FToast();
 
-  // Global key — attach this to your MaterialApp
   static final GlobalKey<NavigatorState> navigatorKey =
       GlobalKey<NavigatorState>();
 
@@ -30,7 +29,7 @@ class JokeAppToast {
   }
 
   static void showToast({required Widget child}) {
-    init(); // auto-init before every toast
+    init(); 
     _fToast.showToast(
       child: child,
       gravity: ToastGravity.TOP,
