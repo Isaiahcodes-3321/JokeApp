@@ -94,3 +94,10 @@ class JokeAppToast {
     );
   }
 }
+
+
+
+// Future _speak() async{
+//     var result = await flutterTts.speak("Hello World");
+//     if (result == 1) setState(() => ttsState = TtsState.playing);
+// }
