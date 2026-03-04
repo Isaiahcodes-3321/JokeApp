@@ -30,7 +30,7 @@ class TwoTaps extends StatelessWidget {
             onPressed: () async {
               await JokeControls.addJoke(context);
             },
-            color: isIconClick ? AppThemes.blackColor : AppThemes.grayColor,
+            color: isIconClick ? AppThemes.green : AppThemes.grayColor,
           ),
           IconButton(
             icon: const Icon(Icons.content_copy, size: 25),

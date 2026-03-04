@@ -41,7 +41,7 @@ class _FavoriteViewState extends State<FavoriteView> {
         child: Column( crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const FullAds(),
+            // const FullAds(),
             Center(
               child: SwipingCardDeck(
                 cardDeck: List.generate(

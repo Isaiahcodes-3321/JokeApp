@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:joke_app/services/apis/joke_varable.dart';
 import 'package:joke_app/services/provider/joke_provider.dart';
@@ -11,14 +12,14 @@ class V2JokeApi {
     var url = Uri.https('v2.jokeapi.dev', MainScreenControls.apiChanging);
     var response = await http.get(url);
     if (response.statusCode == 200 || response.statusCode == 201) {
-      print('My joke ${response.body}');
+      debugPrint('My joke ${response.body}');
       final responseData = jsonDecode(response.body);
       singleJoke = responseData['joke'] ?? '';
       multipleJokeSetup = responseData['setup'] ?? '';
       multipleJokeDelivery = responseData['delivery'] ?? '';
       updateJokes();
     } else {
-      print('error code ${response.body}');
+      debugPrint('error code ${response.body}');
     }
   }
 

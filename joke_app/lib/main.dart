@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'services/storage/joke_storage.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:joke_app/views/approute/route.dart';
 import 'package:joke_app/views/constant/constant.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  MobileAds.instance.initialize();
   setupHive();
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
@@ -35,6 +34,7 @@ class MyApp extends StatelessWidget {
       builder: (context, orientation, screenType) {
         return ProviderScope(  
           child: MaterialApp.router(
+            builder: FToastBuilder(),
             debugShowCheckedModeBanner: false,
             routerConfig: AppRoute.router,
           ),

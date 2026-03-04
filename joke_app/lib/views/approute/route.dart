@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:joke_app/views/app_views/main_view/main_screen.dart';
 import 'package:joke_app/views/app_views/splash_view/splash_view.dart';
+import 'package:joke_app/views/widgets/toast_info.dart';
 
 class AppRoute{
 
@@ -9,6 +10,7 @@ class AppRoute{
   static String mainView = 'mainView';
 
 static final GoRouter router = GoRouter(
+   navigatorKey: JokeAppToast.navigatorKey,
   routes: <RouteBase>[
     GoRoute(
       path: '/',

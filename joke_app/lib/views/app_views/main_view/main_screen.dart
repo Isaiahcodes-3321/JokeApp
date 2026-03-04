@@ -134,7 +134,7 @@ class AppBody {
       refProvider.watch(ProviderAppBarStatus.dadsJokes)
           ? const DadsView()
           : const SizedBox(),
-      const AppBanner(),
+      // const AppBanner(),
     ]);
   }
 }

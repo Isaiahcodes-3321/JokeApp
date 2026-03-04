@@ -1,12 +1,14 @@
-import '../export.dart';
+import 'package:joke_app/views/widgets/toast_info.dart';
 
+import '../export.dart';
 
 class AppNetwork {
   static networkState(BuildContext context) async {
     final connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.none) {
       // ignore: use_build_context_synchronously
-      CopyJoke.snackBar(context, 'No internet connection');
+      Toast.errorToast('No internet connection');
+      // CopyJoke.snackBar(context, 'No internet connection');
     } else {
       refProvider.read(isLoading.notifier).state = 'Loading';
       if (refProvider.watch(ProviderAppBarStatus.randomJokes)) {
