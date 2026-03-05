@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously, deprecated_member_use
+
 import 'package:joke_app/views/widgets/toast_info.dart';
 
 import '../export.dart';
@@ -8,9 +10,10 @@ class CopyJoke {
       {Color bkColor = AppThemes.whiteColor}) async {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        backgroundColor: bkColor,
-        content:
-            Text(text, style: AppTextStyle.regular().copyWith(fontSize: 18.sp)),
+        backgroundColor: AppThemes.green,
+        content: Text(text,
+            style: AppTextStyle.regular()
+                .copyWith(fontSize: 18.sp, color: AppThemes.whiteColor)),
         duration: const Duration(seconds: 2),
       ),
     );

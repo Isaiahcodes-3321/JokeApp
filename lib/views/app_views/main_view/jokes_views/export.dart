@@ -1,5 +1,5 @@
 export 'package:flutter/material.dart';
-export 'package:joke_app/views/widgets/two_taps.dart';
+export 'package:joke_app/views/widgets/copy_fav_button.dart';
 export 'package:joke_app/views/widgets/appbutton.dart';
 export 'package:joke_app/views/widgets/stack_body.dart';
 export 'package:flutter_riverpod/flutter_riverpod.dart';

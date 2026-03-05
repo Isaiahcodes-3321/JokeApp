@@ -29,11 +29,11 @@ class JokeAppToast {
   }
 
   static void showToast({required Widget child}) {
-    init(); 
+    init();
     _fToast.showToast(
       child: child,
       gravity: ToastGravity.TOP,
-      toastDuration: const Duration(seconds: 4),
+      toastDuration: const Duration(seconds: 2),
       fadeDuration: const Duration(milliseconds: 300),
     );
   }

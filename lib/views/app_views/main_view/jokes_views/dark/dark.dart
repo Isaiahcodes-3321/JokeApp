@@ -79,7 +79,7 @@ class DarkView extends StatelessWidget {
                     : const SizedBox(),
 
         //
-        twoTaps: TwoTaps(
+        twoTaps: CopyAndFavButton(
           onPressedCopy: () => CopyJoke.copyJoke(context),
         ),
         generateJoke: AppButton(

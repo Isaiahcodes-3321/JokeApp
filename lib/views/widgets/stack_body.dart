@@ -1,10 +1,16 @@
+import 'package:joke_app/views/widgets/playaudio/play_audio_home.dart';
+
 import 'export.dart';
 
 class StackBody extends StatelessWidget {
-  final Widget  widget;
+  final Widget widget;
   final Widget twoTaps;
   final Widget generateJoke;
-  const StackBody({Key? key, required this.twoTaps, required this.generateJoke, required this.widget})
+  const StackBody(
+      {Key? key,
+      required this.twoTaps,
+      required this.generateJoke,
+      required this.widget})
       : super(key: key);
 
   @override
@@ -29,11 +35,37 @@ class StackBody extends StatelessWidget {
               decoration: BoxDecoration(
                   color: AppThemes.whiteColor,
                   borderRadius: BorderRadius.circular(20.sp)),
-              child: 
-              Center(child: Padding(
-                padding: EdgeInsets.only(left: 3.w, right: 3.w),
-                child: widget,
-              ),),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Flexible(
+                    flex: 8,
+                    child: SizedBox(
+                      width: 100.w,
+                      height: 100.h,
+                      child: Center(
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 3.w),
+                          child: widget,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Flexible(
+                      flex: 1,
+                      child: Container(
+                        margin: EdgeInsets.symmetric(horizontal: 6.w),
+                        width: 100.w,
+                        child: const Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            PlayAudio(),
+                          ],
+                        ),
+                      ))
+                ],
+              ),
             ),
           ),
           SizedBox(

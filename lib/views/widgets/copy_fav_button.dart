@@ -3,9 +3,9 @@ import 'package:joke_app/services/provider/joke_provider.dart';
 import 'package:joke_app/views/app_views/main_view/export.dart';
 import 'package:joke_app/controller/joke_stored_controls/joke_stored_controls.dart';
 
-class TwoTaps extends StatelessWidget {
+class CopyAndFavButton extends StatelessWidget {
   final VoidCallback onPressedCopy;
-  const TwoTaps({
+  const CopyAndFavButton({
     Key? key,
     required this.onPressedCopy,
   }) : super(key: key);

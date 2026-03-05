@@ -48,7 +48,7 @@ class DadsView extends StatelessWidget {
               ),
 
         // to display  buttons to add to favorite and copy joke
-        twoTaps: TwoTaps(
+        twoTaps: CopyAndFavButton(
           onPressedCopy: () => CopyJoke.copyJoke(context),
         ),
         generateJoke: AppButton(

@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:joke_app/controller/export.dart';
 import 'package:joke_app/services/storage/joke_storage.dart';
+import 'package:joke_app/views/widgets/playaudio/play_audio_home.dart'
+    hide PlayAudio;
+import 'package:joke_app/views/widgets/playaudio/play_fav_audio.dart';
 import 'package:swiping_card_deck/swiping_card_deck.dart';
 import 'package:joke_app/views/app_views/Ads/bannar_ads.dart';
 import 'package:joke_app/views/app_views/main_view/export.dart';
@@ -14,6 +17,13 @@ class FavoriteView extends StatefulWidget {
 }
 
 class _FavoriteViewState extends State<FavoriteView> {
+  final Map<int, GlobalKey<PlayAudioState>> _audioKeys = {};
+
+  GlobalKey<PlayAudioState> _getKey(int index) {
+    _audioKeys[index] ??= GlobalKey<PlayAudioState>();
+    return _audioKeys[index]!;
+  }
+
   @override
   Widget build(BuildContext context) {
     // get joke from hive and put in on a list
@@ -38,23 +48,31 @@ class _FavoriteViewState extends State<FavoriteView> {
           child: SizedBox(
         width: 100.w,
         height: 100.h,
-        child: Column( crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             // const FullAds(),
             Center(
               child: SwipingCardDeck(
                 cardDeck: List.generate(
                   getJokes.length,
-                  (index) => jokeCardWidget(index, getJokes[index].jokeStored, () {
+                  (index) =>
+                      jokeCardWidget(index, getJokes[index].jokeStored, () {
                     setState(() {
                       // print('to delete joke');
                       jokeStorage.deleteAt(index);
                     });
                   }, () {
                     // print('to copy joke');
-                    FlutterClipboard.copy(getJokes[index].jokeStored)
-                        .then((value) => CopyJoke.snackBar(context, "Joke Copied"));
+                    FlutterClipboard.copy(getJokes[index].jokeStored).then(
+                        (value) => CopyJoke.snackBar(context, "Joke Copied"));
+                  }, () {
+                    // play Audio
+                    debugPrint("Tap Joke ::: ${getJokes[index].jokeStored}");
+                    _getKey(index)
+                        .currentState
+                        ?.playText(getJokes[index].jokeStored);
                   }),
                 ),
                 onDeckEmpty: () => setState(() {
@@ -70,6 +88,12 @@ class _FavoriteViewState extends State<FavoriteView> {
                       // print('to copy joke');
                       FlutterClipboard.copy(getJokes[index].jokeStored).then(
                           (value) => CopyJoke.snackBar(context, "Joke Copied"));
+                    }, () {
+                      // play Audio
+                      debugPrint("Tap Joke ::: ${getJokes[index].jokeStored}");
+                      _getKey(index)
+                          .currentState
+                          ?.playText(getJokes[index].jokeStored);
                     }),
                   );
                 }),
@@ -83,14 +107,23 @@ class _FavoriteViewState extends State<FavoriteView> {
                 disableDragging: false,
               ),
             ),
+            SizedBox(height: 2.8.h),
+            getJokes.isEmpty
+                ? const SizedBox()
+                : SizedBox(width: 80.w, child: const DirectionArrow()),
           ],
         ),
       )),
     );
   }
 
-  Card jokeCardWidget(int index, String joke, VoidCallback onPressedDelete,
-      VoidCallback onPressedCopy) {
+  Card jokeCardWidget(
+    int index,
+    String joke,
+    VoidCallback onPressedDelete,
+    VoidCallback onPressedCopy,
+    VoidCallback onPressedPlayAudio,
+  ) {
     return Card(
       color: AppThemes.whiteColor,
       elevation: 10.sp,
@@ -133,21 +166,19 @@ class _FavoriteViewState extends State<FavoriteView> {
                 ),
                 Align(
                   alignment: Alignment.centerRight,
-                  child: SizedBox(
-                    width: 35.w,
+                  child: Container(
+                    // color: Colors.orange,
+                    width: 45.w,
                     height: 8.h,
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        FittedBox(
-                          child: IconButton(
-                              onPressed: onPressedDelete,
-                              icon: const Icon(
-                                Icons.delete_outline_rounded,
-                                color: Colors.red,
-                                size: 40,
-                              )),
+                        Flexible(
+                          child: GestureDetector(
+                            onTap: onPressedPlayAudio,
+                            child: PlayFavoriteAudio(key: _getKey(index)),
+                          ),
                         ),
                         FittedBox(
                           child: IconButton(
@@ -157,7 +188,16 @@ class _FavoriteViewState extends State<FavoriteView> {
                                 color: AppThemes.blackColor,
                                 size: 30,
                               )),
-                        )
+                        ),
+                        FittedBox(
+                          child: IconButton(
+                              onPressed: onPressedDelete,
+                              icon: const Icon(
+                                Icons.delete_outline_rounded,
+                                color: Colors.red,
+                                size: 40,
+                              )),
+                        ),
                       ],
                     ),
                   ),
@@ -167,6 +207,80 @@ class _FavoriteViewState extends State<FavoriteView> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class DirectionArrow extends StatefulWidget {
+  const DirectionArrow({Key? key}) : super(key: key);
+
+  @override
+  State<DirectionArrow> createState() => _DirectionArrowState();
+}
+
+class _DirectionArrowState extends State<DirectionArrow>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 800),
+    )..repeat(reverse: true);
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  Widget _buildArrowRow({required bool isBack}) {
+    int count = 4;
+    final icons = List.generate(
+      count,
+      (index) => AnimatedBuilder(
+        animation: _controller,
+        builder: (context, child) {
+          final delay = index / count;
+          final animValue = (_controller.value - delay).clamp(0.0, 1.0);
+
+          final color = ColorTween(
+            begin: const Color.fromARGB(255, 231, 208, 2),
+            end: const Color.fromARGB(255, 44, 44, 43),
+          ).evaluate(CurvedAnimation(
+            parent: AlwaysStoppedAnimation(animValue),
+            curve: Curves.easeInOut,
+          ))!;
+
+          return Icon(
+            isBack
+                ? Icons.arrow_back_ios_rounded
+                : Icons.arrow_forward_ios_rounded,
+            color: color,
+            size: 30,
+          );
+        },
+      ),
+    );
+
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: isBack ? icons : icons.reversed.toList(),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        _buildArrowRow(isBack: true),
+        SizedBox(width: 4.w),
+        _buildArrowRow(isBack: false),
+      ],
     );
   }
 }

@@ -66,23 +66,30 @@ class DevPage extends StatelessWidget {
                         ),
                         text('Email', bigFontSize, () {}),
                         FittedBox(
-                            child: text('shellisaiah2020@gmail.com',
-                                smallFontSize, () {})),
+                            child:
+                                text('shellisaiah2020@gmail.com', smallFontSize,
+                                    () async {
+                          await launchEmailPage();
+                        })),
                         SizedBox(
                           height: 2.h,
                         ),
                         text('Git URL', bigFontSize, () {}),
                         FittedBox(
                           child: GestureDetector(
-                            onTap: () async {
-                              await launchWebPage();
-                            },
-                            child: SelectableText(
-                              'https://github.com/Isaiahcodes-3321',
-                              style: AppTextStyle.regular()
-                                  .copyWith(fontSize: smallFontSize),
-                            ),
-                          ),
+                              onTap: () async {
+                                await launchWebPage();
+                              },
+                              child: text('https://github.com/Isaiahcodes-3321',
+                                  smallFontSize, () async {
+                                await launchWebPage();
+                              })
+                              // SelectableText(
+                              //   'https://github.com/Isaiahcodes-3321',
+                              //   style: AppTextStyle.regular()
+                              //       .copyWith(fontSize: smallFontSize),
+                              // ),
+                              ),
                         ),
                         // SizedBox(
                         //   height: 2.h,
